@@ -27,6 +27,9 @@ jobs:
       - name: Install dependencies (example-4)
         working-directory: ./example-4
         run: npm ci
+      - name: Install Playwright Browsers (example-4)
+        working-directory: ./example-4
+        run: npx playwright install
 
       - name: Run tests (example-4)
         working-directory: ./example-4
