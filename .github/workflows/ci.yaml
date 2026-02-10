@@ -32,14 +32,14 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Build and start services
-        working-directory: example-4
+        working-directory: ./example-4
         run: docker compose up -d --build
 
       - name: Wait for backend to be ready
         run: sleep 20
 
       - name: Run Playwright tests
-        working-directory: example-4
+        working-directory: ./example-4
         run: npx playwright test
 
 
