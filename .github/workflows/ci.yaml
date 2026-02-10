@@ -24,13 +24,21 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies (example-4)
+      - name: Install dependencies
         working-directory: ./example-4
         run: npm ci
-      - name: Install Playwright Browsers (example-4)
-        working-directory: ./example-4
-        run: npx playwright install
 
-      - name: Run tests (example-4)
+      - name: Install Playwright browsers
+        working-directory: ./example-4
+        run: npx playwright install --with-deps
+
+      - name: Start backend
+        working-directory: ./example-4
+        run: |
+          npm run start:backend &
+          sleep 10
+
+      - name: Run tests
         working-directory: ./example-4
         run: npm test
+
