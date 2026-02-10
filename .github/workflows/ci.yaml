@@ -8,35 +8,26 @@
 name: Run Tests on Push
 
 on:
-  #
-  # Deploys the microservice on push to the main branch of this code repository.
-  #
-  push: 
-    branches:
-      - main
-
-  #
-  # Allows deployment to be invoked manually through the GitHub Actions user interface.
-  #
-  workflow_dispatch: 
+  push:
+    branches: [ "main" ]
 
 jobs:
-
-  test:
-    name: Run Example-4 Test
+  test-example-4:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: "18"
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-    - name: Install Dependencies
-      run: npm ci
+      - name: Install dependencies (example-4)
+        working-directory: ./example-4
+        run: npm ci
 
-    - name: Run Tests
-      run: npm test
+      - name: Run tests (example-4)
+        working-directory: ./example-4
+        run: npm test
