@@ -25,7 +25,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: ./example-4
-        run: npm ci
+        run: npm install
 
       - name: Install Playwright browsers
         working-directory: ./example-4
@@ -39,5 +39,5 @@ jobs:
 
       - name: Run tests
         working-directory: ./example-4
-        run: npm test
+        run: npx playwright test
 
